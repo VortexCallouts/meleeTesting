@@ -1,0 +1,190 @@
+
+<div class="container justify-content-center">
+
+    
+    <div class="row paddingTop justify-content-center">
+        <div class="col-4">
+
+        </div>
+        
+        <div class="col-4">
+        </div>
+        
+        <div class="col-4">
+
+        </div>
+        
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-4">
+
+        </div>
+        
+        <div class="col-4">
+            <table class="noTableBorder table-responsive">
+                <tr>
+                    <th (click)="changeTeamName('one')">{{teamOne.teamName}}</th>
+                    <th class="noBorder"></th>
+                    <th (click)="changeTeamName('two')">{{teamTwo.teamName}}</th>
+                </tr>
+                <tr>
+                    <th rowspan="2">{{teamOne.teamScore}}</th>
+                    <td rowspan="1">Half</td>
+                    <th rowspan="2">{{teamTwo.teamScore}}</th>
+                </tr>
+                <tr>
+                    <td>{{half}}</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="col-4">
+
+        </div>
+        
+    </div>
+
+<!-- Second Space Row -->
+    <div class="row justify-content-center">
+        <div class="col-3">
+           <table class="centerTable table-responseive ">
+                <tr *ngFor="let player of teamOne.players let i = index;">
+                    <td (click)='selectMatch(i+1)'>{{i + 1}}</td>
+                    <td (click)="editPlayerName(i, 'one')">{{player.name}}</td>
+                    <td (click)="editPlayerScore(i, 'one')">{{Matches[i].playerOneTotal}}</td>
+                    <td>{{player.teamScore}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-1"></div>
+        
+        <div class="col-4">
+<table class="paddingTop centerTable noTableBorder">
+    <tr>
+        <th colspan="3" style="text-align:center">{{teamOne.players[currentmatchNumber-1].name}}</th>
+        <th colspan="1">  M{{currentmatchNumber}}</th>
+        <th colspan="3">{{teamTwo.players[currentmatchNumber-1].name}}</th>
+    </tr>
+    <tr>
+        <td colspan="2" class="noBorder"></td>
+        <td colspan="1" *ngIf="currentmatchNumber != 3 && currentmatchNumber != 7">{{Matches[currentmatchNumber-1].playerOneThrows[0]}}</td>
+        <td *ngIf="currentmatchNumber == 3 || currentmatchNumber == 7">{{Matches[currentmatchNumber-1].playerOneThrows[0] + Matches[currentmatchNumber-1].playerOneThrows[1]}}</td>
+        <td colspan="1" >1</td>
+        <td colspan="1" *ngIf="currentmatchNumber != 3 && currentmatchNumber != 7">{{Matches[currentmatchNumber-1].playerTwoThrows[0]}}</td>
+        <td *ngIf="currentmatchNumber == 3 || currentmatchNumber == 7">{{Matches[currentmatchNumber-1].playerTwoThrows[0] + Matches[currentmatchNumber-1].playerTwoThrows[1]}}</td>
+        <td colspan="2"class="noBorder"></td>
+    </tr>
+    <tr>
+        <td colspan="2"class="noBorder"></td>
+        <td *ngIf="currentmatchNumber != 3 && currentmatchNumber != 7">{{Matches[currentmatchNumber-1].playerOneThrows[1]}}</td>
+        <td *ngIf="currentmatchNumber == 3 || currentmatchNumber == 7">{{Matches[currentmatchNumber-1].playerOneThrows[2] + Matches[currentmatchNumber-1].playerOneThrows[3]}}</td>
+        <td>2</td>
+        <td *ngIf="currentmatchNumber != 3 && currentmatchNumber != 7">{{Matches[currentmatchNumber-1].playerTwoThrows[1]}}</td>
+        <td *ngIf="currentmatchNumber == 3 || currentmatchNumber == 7">{{Matches[currentmatchNumber-1].playerTwoThrows[2] + Matches[currentmatchNumber-1].playerTwoThrows[3]}}</td>
+        <td colspan="2"class="noBorder"></td>
+    </tr>
+
+    <tr>
+        <td colspan="2"class="noBorder"></td>
+        <td *ngIf="currentmatchNumber != 3 &&currentmatchNumber != 7">{{Matches[currentmatchNumber-1].playerOneThrows[2]}}</td>
+        <td *ngIf="currentmatchNumber == 3 || currentmatchNumber == 7">{{Matches[currentmatchNumber-1].playerOneThrows[4] + Matches[currentmatchNumber-1].playerOneThrows[5]}}</td>
+        <td>3</td>
+        <td *ngIf="currentmatchNumber != 3 && currentmatchNumber != 7">{{Matches[currentmatchNumber-1].playerTwoThrows[2]}}</td>
+        <td *ngIf="currentmatchNumber == 3 || currentmatchNumber == 7">{{Matches[currentmatchNumber-1].playerTwoThrows[4] + Matches[currentmatchNumber-1].playerTwoThrows[5]}}</td>
+        <td colspan="2"class="noBorder"></td>
+    </tr>
+
+    <tr>
+        <td colspan="2"class="noBorder"></td>
+        <td *ngIf="currentmatchNumber != 3 && currentmatchNumber != 7">{{Matches[currentmatchNumber-1].playerOneThrows[3]}}</td>
+        <td *ngIf="currentmatchNumber == 3 || currentmatchNumber == 7">{{Matches[currentmatchNumber-1].playerOneThrows[6] + Matches[currentmatchNumber-1].playerOneThrows[7]}}</td>
+        <td>4</td>
+        <td *ngIf="currentmatchNumber != 3 && currentmatchNumber != 7">{{Matches[currentmatchNumber-1].playerTwoThrows[3]}}</td>
+        <td *ngIf="currentmatchNumber == 3 || currentmatchNumber == 7">{{Matches[currentmatchNumber-1].playerTwoThrows[6] + Matches[currentmatchNumber-1].playerTwoThrows[7]}}</td>
+        <td colspan="2"class="noBorder"></td>
+    </tr>
+
+    <tr>
+        <td colspan="2"class="noBorder"></td>
+        <td *ngIf="currentmatchNumber != 3 && currentmatchNumber != 7">{{Matches[currentmatchNumber-1].playerOneThrows[4]}}</td>
+        <td *ngIf="currentmatchNumber == 3 || currentmatchNumber == 7">{{Matches[currentmatchNumber-1].playerOneThrows[8] + Matches[currentmatchNumber-1].playerOneThrows[9]}}</td>
+        <td>5</td>
+        <td *ngIf="currentmatchNumber != 3 && currentmatchNumber != 7">{{Matches[currentmatchNumber-1].playerTwoThrows[4]}}</td>
+        <td *ngIf="currentmatchNumber == 3 || currentmatchNumber == 7">{{Matches[currentmatchNumber-1].playerTwoThrows[8] + Matches[currentmatchNumber-1].playerTwoThrows[9]}}</td>
+        <td colspan="2"class="noBorder"></td>
+    </tr>
+    <tr>
+        <td colspan="2"class="noBorder"></td>
+        <td>{{Matches[currentmatchNumber-1].playerOneTotal}}</td>
+        <td>Score</td>
+        <td>{{Matches[currentmatchNumber-1].playerTwoTotal}}</td>
+        <td colspan="2"class="noBorder"></td>
+    </tr>
+
+</table>
+        </div>
+        
+        <div class="col-1">
+
+        </div>
+        <div class="col-3">
+            <table class="centerTable table-responseive">
+                <tr *ngFor="let player of teamTwo.players let i = index;">
+                    <td (click)="editPlayerName(i, 'two')">{{player.name}}</td>
+                    <td (click)="editPlayerScore(i, 'two')">{{Matches[i].playerTwoTotal}}</td>
+                    <td>{{player.teamScore}}</td>
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-2">
+
+        </div>
+
+        <div class="col-2">
+            <!-- <button class="scoreButton">0</button> -->
+            <button (click)="scoreThrow('teamOne',0)">0</button>
+            <button (click)="scoreThrow('teamOne',1)">1</button>
+            <button (click)="scoreThrow('teamOne',2)">2</button>
+            <button (click)="scoreThrow('teamOne',3)">3</button>   
+            <button (click)="scoreThrow('teamOne',4)">4</button>
+            <button (click)="scoreThrow('teamOne',5)">5</button> 
+            <button (click)="scoreThrow('teamOne',6)">6</button>
+            <button (click)="scoreThrow('teamOne',7)">7</button>
+            <button (click)="scoreThrow('teamOne',8)">8</button>
+            <button (click)="scoreThrow('teamOne',9)">9</button>
+            <button (click)="undoThrow('teamOne')" >U</button>
+
+        </div>
+
+        <div class="col-2">
+
+        </div>
+
+        <div class="col-2">
+            <button (click)="scoreThrow('teamTwo',0)">0</button>
+            <button (click)="scoreThrow('teamTwo',1)">1</button>
+            <button (click)="scoreThrow('teamTwo',2)">2</button>
+            <button (click)="scoreThrow('teamTwo',3)">3</button>   
+            <button (click)="scoreThrow('teamTwo',4)">4</button>
+            <button (click)="scoreThrow('teamTwo',5)">5</button> 
+            <button (click)="scoreThrow('teamTwo',6)">6</button>
+            <button (click)="scoreThrow('teamTwo',7)">7</button>
+            <button (click)="scoreThrow('teamTwo',8)">8</button>
+            <button (click)="scoreThrow('teamTwo',9)">9</button>
+            <button (click)="undoThrow('teamTwo')" >U</button>
+        </div>
+
+
+        <div class="col-2">
+
+        </div>
+    </div>
+
+
+  
+</div>

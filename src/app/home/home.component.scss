@@ -1,0 +1,50 @@
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+  }
+  table{
+      text-align: center;
+  }
+  h1{
+      text-align: center;
+  }
+  th{
+      font-size: 25px;
+  }
+  
+.scoreText{
+    border-width: 0px;
+    text-align: center;
+}
+
+.centerTable{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.paddingTop{
+    margin-top: 5vw;
+}
+
+.noBorder{
+    border: none;
+}
+.noTableBorder {
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.scoreButton {
+    background-color: white;
+    border: black 1;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
