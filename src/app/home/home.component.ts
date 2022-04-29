@@ -89,7 +89,6 @@ for (let i = 0; i < 8; i++) {
   }
   this.Matches.push(tempMatch)
   }
-  console.log(this.Matches)
 }
 
 
@@ -200,7 +199,6 @@ editHalf(){
 //Change Current Match you are selected inside of.
 selectMatch(matchNumber : number){
   this.currentmatchNumber = matchNumber;
-  console.log(this.currentmatchNumber);
   if(matchNumber >= 5){
     this.half = '2';
   }else{
@@ -230,7 +228,6 @@ if(team == 'teamOne'){
     }
       this.Matches[this.currentmatchNumber-1].playerOneThrows[currentThrow-2] = 0;
       this.Matches[this.currentmatchNumber-1].playerOneTotal -= score;
-      console.log(this.Matches[this.currentmatchNumber-1].playerOneThrows)
       this.Matches[this.currentmatchNumber-1].currentThrowPlayerOne -= 1;
   }
 }else{
@@ -242,7 +239,6 @@ if(team == 'teamOne'){
   }
     this.Matches[this.currentmatchNumber-1].playerTwoThrows[currentThrow-2] = 0;
     this.Matches[this.currentmatchNumber-1].playerTwoTotal -= score;
-    console.log(this.Matches[this.currentmatchNumber-1].playerTwoThrows)
     this.Matches[this.currentmatchNumber-1].currentThrowPlayerTwo -= 1;
 }
 }
@@ -251,10 +247,10 @@ if(team == 'teamOne'){
 //will add a score to a players match based on team and button clicked along with throw number?
 scoreThrow(team: string,score: any){
     if(team == "teamOne"){
+      console.log(this.Matches[this.currentmatchNumber-1].currentThrowPlayerOne)
       if(this.currentmatchNumber == 3 || this.currentmatchNumber == 7){
         const currentThrow = this.Matches[this.currentmatchNumber-1].currentThrowPlayerOne
         if(currentThrow <= 10 ){
-          console.log(score)
           if(score == 'D'){
             this.Matches[this.currentmatchNumber-1].playerOneThrows[currentThrow-1] = 'D';
             this.Matches[this.currentmatchNumber-1].playerOneTotal += 0;
@@ -301,6 +297,7 @@ scoreThrow(team: string,score: any){
       }
       //TEAM TWO SCORING BELOW
     }else{
+      console.log(this.Matches[this.currentmatchNumber-1].currentThrowPlayerTwo)
       if(this.currentmatchNumber == 3 || this.currentmatchNumber == 7){
         const currentThrow = this.Matches[this.currentmatchNumber-1].currentThrowPlayerTwo
         if(currentThrow <= 10 ){
@@ -351,7 +348,6 @@ scoreThrow(team: string,score: any){
       //NORMAL WIN BONUS SCORING
     if(this.currentmatchNumber != 3 && this.currentmatchNumber != 7){
       if(this.Matches[this.currentmatchNumber-1].currentThrowPlayerTwo == 6 && this.Matches[this.currentmatchNumber-1].currentThrowPlayerOne == 6){
-        console.log("SCORE IS")
         //SCORE IS TIED
         if(this.Matches[this.currentmatchNumber-1].playerOneTotal == this.Matches[this.currentmatchNumber-1].playerTwoTotal 
           && this.Matches[this.currentmatchNumber-1].winnerPoints == false){
@@ -365,9 +361,7 @@ scoreThrow(team: string,score: any){
               }
             });
             dialogRef.afterClosed().subscribe(result => {
-              console.log(result)
               if(result.playerOne > 0){
-                console.log(result.playerOne)
                 this.addTeamScore('teamOne', result.playerOne)
               }
               if(result.playerTwo > 0){
@@ -391,7 +385,6 @@ scoreThrow(team: string,score: any){
       }
   }else{
     if(this.Matches[this.currentmatchNumber-1].currentThrowPlayerTwo == 11 && this.Matches[this.currentmatchNumber-1].currentThrowPlayerOne == 11){
-      console.log("SCORE IS")
       //Player One Wins + 4
       if(this.Matches[this.currentmatchNumber-1].playerOneTotal > this.Matches[this.currentmatchNumber-1].playerTwoTotal && this.Matches[this.currentmatchNumber-1].winnerPoints == false){
         this.addTeamScore('teamOne',4);
