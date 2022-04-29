@@ -367,10 +367,11 @@ scoreThrow(team: string,score: any){
             dialogRef.afterClosed().subscribe(result => {
               console.log(result)
               if(result.playerOne > 0){
+                console.log(result.playerOne)
                 this.addTeamScore('teamOne', result.playerOne)
               }
               if(result.playerTwo > 0){
-                this.addTeamScore('teamOne', result.playerTwo)
+                this.addTeamScore('teamTwo', result.playerTwo)
               }
               this.addTeamScore(result.winner,4)
             });
