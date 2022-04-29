@@ -2,44 +2,39 @@
 <div class="container">
 
     <div class="row paddingTop justify-content-center">
-        <h1 class="text-center">Over Time</h1>
+        <h1 class="text-center">OVER TIME</h1>
     </div>
 
-    <div class="row paddingTop justify-content-center">
+    <div class="row paddingTop text-center">
         <div class="col-5">
-            <h1>Player One OT Kill Shots Hit</h1>
-            <span>
+            <h3 class="text-center">{{names.playerOne}} OT KillShots</h3>
                 <button mat-raised-button (click)="minus('one')">-</button>
                 {{data.playerOne}}
                 <button mat-raised-button (click)="add('one')">+</button> 
-            </span>
         </div>
         
         <div class="col-2">
         </div>
         
         <div class="col-5">
-            <h1>Player Two OT Kill Shots Hit</h1>
-            <span>
-                <button mat-raised-button (click)="minus('two')">-</button>
+            <h3 class="text-center">{{names.playerTwo}} OT KillShots</h3>
+                <button class="text-center" mat-raised-button (click)="minus('two')">-</button>
                 {{data.playerTwo}}
-                <button mat-raised-button (click)="add('two')">+</button> 
-            </span>
-
+                <button  class="text-center" mat-raised-button (click)="add('two')">+</button> 
         </div>
         
     </div>
 
-    <div class="row paddingTop justify-content-center">
+    <div class="row paddingTop text-center" style="margin-top: 10px;">
         <div class="col-5">
-            <button mat-raised-button [mat-dialog-close]="data" (click)="selectWinner('teamOne')">Player One Wins</button>
+            <button mat-raised-button [mat-dialog-close]="data" (click)="selectWinner('teamOne')">{{names.playerOne}} Wins</button>
         </div>
         
         <div class="col-2">
         </div>
         
         <div class="col-5">
-             <button mat-raised-button [mat-dialog-close]="data" (click)="selectWinner('teamTwo')">Player Two Wins</button>
+             <button mat-raised-button [mat-dialog-close]="data" (click)="selectWinner('teamTwo')">{{names.playerTwo}} Wins</button>
         </div>
         
     </div>

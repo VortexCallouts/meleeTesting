@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-over-time-dialog',
@@ -14,10 +15,10 @@ playerTwo : 0,
 winner: ''
 }
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public names: {playerOne:string, playerTwo:string},) { }
 
   ngOnInit(): void {
-
+    console.log(this.names.playerOne)
   }
 
   add(player: string){

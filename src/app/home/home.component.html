@@ -156,19 +156,18 @@
                 </tr>
                 <tr>
                     <td colspan="2" (click)="scoreThrow('teamOne',2)">2</td>
-                    <td colspan="2" (click)="scoreThrow('teamOne',7)">7</td>
-                </tr>
-                <tr>
-                    <td colspan="2" (click)="scoreThrow('teamOne',3)">3</td>
                     <td colspan="2" (click)="scoreThrow('teamOne',8)">8</td>
                 </tr>
                 <tr>
-                    <td colspan="2" (click)="scoreThrow('teamOne',4)">4</td>
+                    <td colspan="2" (click)="scoreThrow('teamOne',3)">3</td>
                     <td colspan="2" (click)="scoreThrow('teamOne',9)">9</td>
                 </tr>
                 <tr>
-                    <td colspan="2" (click)="undoThrow('teamOne')">U</td>
+                    <td colspan="2" (click)="scoreThrow('teamOne',4)">4</td>
                     <td colspan="2" (click)="scoreThrow('teamOne','D')">D</td>
+                </tr>
+                <tr>
+                    <td colspan="4" (click)="undoThrow('teamOne')">U</td>
                 </tr>
             </table>
         </div>
@@ -189,19 +188,18 @@
                 </tr>
                 <tr>
                     <td (click)="scoreThrow('teamTwo',2)" colspan="2">2</td>
-                    <td (click)="scoreThrow('teamTwo',7)" colspan="2">7</td>
-                </tr>
-                <tr>
-                    <td (click)="scoreThrow('teamTwo',3)" colspan="2">3</td>
                     <td (click)="scoreThrow('teamTwo',8)" colspan="2">8</td>
                 </tr>
                 <tr>
-                    <td (click)="scoreThrow('teamTwo',4)" colspan="2">4</td>
+                    <td (click)="scoreThrow('teamTwo',3)" colspan="2">3</td>
                     <td (click)="scoreThrow('teamTwo',9)" colspan="2">9</td>
                 </tr>
                 <tr>
-                    <td (click)="undoThrow('teamTwo')" colspan="2">U</td>
-                    <td (click)="scoreThrow('teamTwo','D')"colspan="2">D</td>
+                    <td (click)="scoreThrow('teamTwo',4)" colspan="2">4</td>
+                    <td (click)="scoreThrow('teamTwo','D')" colspan="2">D</td>
+                </tr>
+                <tr>
+                    <td (click)="undoThrow('teamTwo')" colspan="4">U</td>
                 </tr>
             </table>
         </div>

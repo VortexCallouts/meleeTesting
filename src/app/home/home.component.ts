@@ -96,20 +96,18 @@ for (let i = 0; i < 8; i++) {
   //function to change team names on clicking the existing team name
 changeTeamName(team: string){
   if(team == 'one'){
-   let name =  prompt('Type your new teeam name  for ' + this.teamOne.teamName +' here');
+   let name =  prompt('Type your new team name  for ' + this.teamOne.teamName +' here');
 
-    if(name == null){
-      name = 'Team One'
+    if(name != null && name != ''){
+      this.teamOne.teamName = name;
     }
-    this.teamOne.teamName = name;
   }
 
   if(team == 'two'){
-    let name =  prompt('Type your new teeam name  for ' + this.teamTwo.teamName +' here');
-    if(name == null){
-      name = 'Team Two'
+    let name =  prompt('Type your new team name  for ' + this.teamTwo.teamName +' here');
+    if(name != null && name != ''){
+      this.teamTwo.teamName = name;
     }
-    this.teamTwo.teamName = name;
   }
 }
 //function to add players to a team when clicking player header
@@ -163,7 +161,6 @@ editPlayerName(index: any, team : string){
 
   if(team == 'two'){
     let name = prompt('You are changing "' + this.teamTwo.teamName +'" ' + this.teamOne.players[index].name  + "'s Player name to ")
-    this.teamTwo.players[index].name = name
     if(name != '' && name != null){
       this.teamTwo.players[index].name = name
       }
@@ -359,8 +356,13 @@ scoreThrow(team: string,score: any){
         if(this.Matches[this.currentmatchNumber-1].playerOneTotal == this.Matches[this.currentmatchNumber-1].playerTwoTotal 
           && this.Matches[this.currentmatchNumber-1].winnerPoints == false){
             let dialogRef = this.dialog.open(OverTimeDialogComponent, {
-              height: '400px',
+              height: '250px',
               width: '600px',
+              disableClose: true,
+              data: {
+                playerOne: this.teamOne.players[this.currentmatchNumber-1].name,
+                playerTwo: this.teamTwo.players[this.currentmatchNumber-1].name
+              }
             });
             dialogRef.afterClosed().subscribe(result => {
               console.log(result)
