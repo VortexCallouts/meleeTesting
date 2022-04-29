@@ -32,8 +32,8 @@ export class HomeComponent implements OnInit {
   teamOne: Team = {
     teamName: 'Team One', teamScore: 0, 
     players:[
-      {name:'Player1',score: 0,teamScore:0},
-      {name:'Player2',score: 0,teamScore:0},
+      {name:'Hatchet',score: 0,teamScore:0},
+      {name:'Hatchet',score: 0,teamScore:0},
       {name:'Duals',score: 0,teamScore:0},
       {name:'Big Axe',score: 0,teamScore:0},
       {name:'Hatchet',score: 0,teamScore:0},
@@ -156,12 +156,17 @@ addPlayer(team: string){
 editPlayerName(index: any, team : string){
   if(team == 'one'){
     let name = prompt('You are changing "' + this.teamOne.teamName +'" ' + this.teamOne.players[index].name  + "'s Player name to ")
+    if(name != '' && name != null){
     this.teamOne.players[index].name = name
+    }
   }
 
   if(team == 'two'){
     let name = prompt('You are changing "' + this.teamTwo.teamName +'" ' + this.teamOne.players[index].name  + "'s Player name to ")
     this.teamTwo.players[index].name = name
+    if(name != '' && name != null){
+      this.teamTwo.players[index].name = name
+      }
   }
 
 }
@@ -252,23 +257,34 @@ scoreThrow(team: string,score: any){
       if(this.currentmatchNumber == 3 || this.currentmatchNumber == 7){
         const currentThrow = this.Matches[this.currentmatchNumber-1].currentThrowPlayerOne
         if(currentThrow <= 10 ){
-          this.Matches[this.currentmatchNumber-1].playerOneThrows[currentThrow-1] = score;
-          this.Matches[this.currentmatchNumber-1].playerOneTotal += score;
-          this.Matches[this.currentmatchNumber-1].currentThrowPlayerOne++;
+          console.log(score)
+          if(score == 'D'){
+            this.Matches[this.currentmatchNumber-1].playerOneThrows[currentThrow-1] = 'D';
+            this.Matches[this.currentmatchNumber-1].playerOneTotal += 0;
+            this.Matches[this.currentmatchNumber-1].currentThrowPlayerOne++;
+            }else{
+              this.Matches[this.currentmatchNumber-1].playerOneThrows[currentThrow-1] = score;
+              this.Matches[this.currentmatchNumber-1].playerOneTotal += score;
+              this.Matches[this.currentmatchNumber-1].currentThrowPlayerOne++;
 
-                    //Checking If you Hit a Killshot
-                    if(score == 8 || score === 9){this.addTeamScore(team,1);}
+                        //Checking If you Hit a Killshot
+                        if(score == 8 || score === 9){this.addTeamScore(team,1);}
 
-                    //Checking If Game Score for Player One is 68
-                    if(this.Matches[this.currentmatchNumber-1].playerOneTotal >= 68 && this.Matches[this.currentmatchNumber-1].currentThrowPlayerOne == 11){
-                      this.addTeamScore(team,2);
-                    }
+                        //Checking If Game Score for Player One is 68
+                        if(this.Matches[this.currentmatchNumber-1].playerOneTotal >= 68 && this.Matches[this.currentmatchNumber-1].currentThrowPlayerOne == 11){
+                          this.addTeamScore(team,2);
+                        }
+          }
 
         }
       }else{
         const currentThrow = this.Matches[this.currentmatchNumber-1].currentThrowPlayerOne
         if(currentThrow <= 5 ){
-
+          if(score == 'D'){
+            this.Matches[this.currentmatchNumber-1].playerOneThrows[currentThrow-1] = 'D';
+            this.Matches[this.currentmatchNumber-1].playerOneTotal += 0;
+            this.Matches[this.currentmatchNumber-1].currentThrowPlayerOne++;
+          }else{
           //Adding and Displaying Points
 
             this.Matches[this.currentmatchNumber-1].playerOneThrows[currentThrow-1] = score;
@@ -284,29 +300,39 @@ scoreThrow(team: string,score: any){
             this.addTeamScore(team,2);
           }
         }
+        }
       }
       //TEAM TWO SCORING BELOW
     }else{
       if(this.currentmatchNumber == 3 || this.currentmatchNumber == 7){
         const currentThrow = this.Matches[this.currentmatchNumber-1].currentThrowPlayerTwo
         if(currentThrow <= 10 ){
-          this.Matches[this.currentmatchNumber-1].playerTwoThrows[currentThrow-1] = score;
-          this.Matches[this.currentmatchNumber-1].playerTwoTotal += score;
-          this.Matches[this.currentmatchNumber-1].currentThrowPlayerTwo++;
+          if(score == 'D'){
+            this.Matches[this.currentmatchNumber-1].playerTwoThrows[currentThrow-1] = 'D';
+            this.Matches[this.currentmatchNumber-1].playerTwoTotal += 0;
+            this.Matches[this.currentmatchNumber-1].currentThrowPlayerTwo++;
+          }else{
+            this.Matches[this.currentmatchNumber-1].playerTwoThrows[currentThrow-1] = score;
+            this.Matches[this.currentmatchNumber-1].playerTwoTotal += score;
+            this.Matches[this.currentmatchNumber-1].currentThrowPlayerTwo++;
 
-                    //Checking If you Hit a Killshot
-                    if(score == 8 || score === 9){this.addTeamScore(team,1);}
+              //Checking If you Hit a Killshot
+            if(score == 8 || score === 9){this.addTeamScore(team,1);}
 
-                    //Checking If Game Score for Player One is 68 or higher
-                    if(this.Matches[this.currentmatchNumber-1].playerTwoTotal >= 68 && this.Matches[this.currentmatchNumber-1].currentThrowPlayerTwo == 11){
-                      this.addTeamScore(team,2);
-                    }
-
-        }
+            //Checking If Game Score for Player One is 68 or higher
+            if(this.Matches[this.currentmatchNumber-1].playerTwoTotal >= 68 && this.Matches[this.currentmatchNumber-1].currentThrowPlayerTwo == 11){
+              this.addTeamScore(team,2);
+            }
+          }
+      }
       }else{
         const currentThrow = this.Matches[this.currentmatchNumber-1].currentThrowPlayerTwo
         if(currentThrow <= 5 ){
-
+          if(score == 'D'){
+            this.Matches[this.currentmatchNumber-1].playerTwoThrows[currentThrow-1] = 'D';
+            this.Matches[this.currentmatchNumber-1].playerTwoTotal += 0;
+            this.Matches[this.currentmatchNumber-1].currentThrowPlayerTwo++;
+          }else{
           //Adding and Displaying Points
 
             this.Matches[this.currentmatchNumber-1].playerTwoThrows[currentThrow-1] = score;
@@ -314,13 +340,14 @@ scoreThrow(team: string,score: any){
             this.Matches[this.currentmatchNumber-1].currentThrowPlayerTwo++;
 
 
-          //Checking If you Hit a Killshot
-          if(score == 8){this.addTeamScore(team,1);}
+            //Checking If you Hit a Killshot
+            if(score == 8){this.addTeamScore(team,1);}
 
-          //Checking If Game Score for Player One is 34
-          if(this.Matches[this.currentmatchNumber-1].playerTwoTotal == 34 && this.Matches[this.currentmatchNumber-1].currentThrowPlayerTwo == 6){
-            this.addTeamScore(team,2);
-          }
+            //Checking If Game Score for Player One is 34
+            if(this.Matches[this.currentmatchNumber-1].playerTwoTotal == 34 && this.Matches[this.currentmatchNumber-1].currentThrowPlayerTwo == 6){
+              this.addTeamScore(team,2);
+            }
+        }
         }
       }
 
