@@ -349,8 +349,7 @@ scoreThrow(team: string,score: any){
     if(this.currentmatchNumber != 3 && this.currentmatchNumber != 7){
       if(this.Matches[this.currentmatchNumber-1].currentThrowPlayerTwo == 6 && this.Matches[this.currentmatchNumber-1].currentThrowPlayerOne == 6){
         //SCORE IS TIED
-        if(this.Matches[this.currentmatchNumber-1].playerOneTotal == this.Matches[this.currentmatchNumber-1].playerTwoTotal 
-          && this.Matches[this.currentmatchNumber-1].winnerPoints == false){
+        if(this.Matches[this.currentmatchNumber-1].playerOneTotal == this.Matches[this.currentmatchNumber-1].playerTwoTotal && this.Matches[this.currentmatchNumber-1].winnerPoints == false){
             let dialogRef = this.dialog.open(OverTimeDialogComponent, {
               height: '250px',
               width: '600px',
@@ -385,6 +384,27 @@ scoreThrow(team: string,score: any){
       }
   }else{
     if(this.Matches[this.currentmatchNumber-1].currentThrowPlayerTwo == 11 && this.Matches[this.currentmatchNumber-1].currentThrowPlayerOne == 11){
+
+      if(this.Matches[this.currentmatchNumber-1].playerOneTotal == this.Matches[this.currentmatchNumber-1].playerTwoTotal && this.Matches[this.currentmatchNumber-1].winnerPoints == false){
+        let dialogRef = this.dialog.open(OverTimeDialogComponent, {
+          height: '250px',
+          width: '600px',
+          disableClose: true,
+          data: {
+            playerOne: this.teamOne.players[this.currentmatchNumber-1].name,
+            playerTwo: this.teamTwo.players[this.currentmatchNumber-1].name
+          }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+          if(result.playerOne > 0){
+            this.addTeamScore('teamOne', result.playerOne)
+          }
+          if(result.playerTwo > 0){
+            this.addTeamScore('teamTwo', result.playerTwo)
+          }
+          this.addTeamScore(result.winner,4)
+        });
+      }
       //Player One Wins + 4
       if(this.Matches[this.currentmatchNumber-1].playerOneTotal > this.Matches[this.currentmatchNumber-1].playerTwoTotal && this.Matches[this.currentmatchNumber-1].winnerPoints == false){
         this.addTeamScore('teamOne',4);
